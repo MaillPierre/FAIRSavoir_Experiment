@@ -25,10 +25,24 @@
         "logFile": "/user/pmaillot/home/git/IndeGx/code/indegx.log",
         "outputFile": "/user/pmaillot/home/git/IndeGx/code/index.trig"
     },
-    "transparency": {
+    "transparency1": {
         "manifest": "/user/pmaillot/home/git/KG_accountability/nonTrivialExtractionRules/_manifest.ttl",
-        "post": "/user/pmaillot/home/git/KG_accountability/rules/manifest.ttl",
+        "post": "/user/pmaillot/home/git/KG_accountability/equivalencesRules/_manifest.ttl",
         "catalog": "./transparencyCatalog.ttl",
+        "defaultQueryTimeout": 1200,
+        "nbFetchRetries": 10,
+        "millisecondsBetweenRetries": 5000,
+        "maxConccurentQueries": 3000,
+        "delayMillisecondsTimeForConccurentQuery": 1000,
+        "logFile": "./indegx.transparencyTmp.log",
+        "outputFile": "./indegx.transparencyTmp.trig",
+        "manifestJSON": "./manifests.transparencyTmp.json",
+        "postManifestJSON": "./postManifests.transparencyTmp.json"
+    },
+    "transparency2": {
+        "manifest": "/user/pmaillot/home/git/KG_accountability/rules/manifest.ttl",
+        "post": "/user/pmaillot/home/git/KG_accountability/score_computing_rules/_manifest.ttl",
+        "catalog": "./transparency_localhost_catalog.ttl",
         "defaultQueryTimeout": 1200,
         "nbFetchRetries": 10,
         "millisecondsBetweenRetries": 5000,

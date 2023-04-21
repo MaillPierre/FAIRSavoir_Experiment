@@ -55,6 +55,6 @@
         "build": "npx tsc",
         "devrun": "npx tsc && node src/Indegx.js -c dev",
         "run": "node src/Indegx.js -c prod",
-        "accountability": "rm indegx.transparency.log&& node src/Indegx.js -c transparency"
+        "transparency": "rm indegx.transparency1.log || true && rm indegx.transparency2.log || true && node src/Indegx.js -c transparency1 && node src/Indegx.js -c transparency2 "
     }
 }
