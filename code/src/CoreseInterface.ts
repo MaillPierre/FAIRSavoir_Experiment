@@ -75,3 +75,8 @@ export function sendAsk(endpoint: string, queryString: string, timeout?: number)
         throw new Error("sendAsk only accept ASK queries")
     }
 }
+
+export function loadRDFFileToCorese(filename: string): Promise<any> {
+    let queryString = "LOAD <" + filename + "> INTO GRAPH <" + coreseDefaultGraphURI + ">";
+    return sendUpdate(coreseServerUrl, queryString);
+}

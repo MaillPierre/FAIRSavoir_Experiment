@@ -51,10 +51,10 @@
         "util": "^0.12.5"
     },
     "scripts": {
-        "start": "java -Xmx15g -jar corese-server-4.3.0-jar-with-dependencies.jar -su > corese.log",
+        "start": "rm corese.log || true && java -Xmx15g -jar corese-server-4.3.0-jar-with-dependencies.jar -su > corese.log",
         "build": "npx tsc",
         "devrun": "npx tsc && node src/Indegx.js -c dev",
         "run": "node src/Indegx.js -c prod",
-        "transparency": "rm indegx.transparency1.log || true && rm indegx.transparency2.log || true && node src/Indegx.js -c transparency1 && node src/Indegx.js -c transparency2 "
+        "transparency": "rm indegx.transparencyTmp.log || true && rm indegx.transparency.log || true && node src/Indegx.js -c transparency1 && node src/Indegx.js -c transparency2 "
     }
 }
