@@ -28,7 +28,7 @@
     "transparency1": {
         "manifest": "/user/pmaillot/home/git/KG_accountability/nonTrivialExtractionRules/_manifest.ttl",
         "post": "/user/pmaillot/home/git/KG_accountability/equivalencesRules/_manifest.ttl",
-        "catalog": "./testCatalog.ttl",
+        "catalog": "../catalogs/accountability_selection.ttl",
         "defaultQueryTimeout": 1200,
         "nbFetchRetries": 10,
         "millisecondsBetweenRetries": 5000,

@@ -33,6 +33,9 @@ export function urlToBaseURI(url: string) {
     return baseURI;
 }
 
+export function fixCommonStringErrors(queryString: string): string {
+    return queryString.replaceAll("nodeID://", "_:"); // Dirty hack to fix nodeID:// from Virtuoso servers for turtle
+}
 
 export function createStore() {
     let store = $rdf.graph();

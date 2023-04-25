@@ -15,7 +15,8 @@ import * as SPARQLUtils from "./SPARQLUtils.js";
 export function writeIndex(filename: string): Promise<void> {
     return Global.fetchGETPromise(coreseServerUrl + "?query=" + encodeURIComponent("CONSTRUCT { GRAPH ?g {?s ?p ?o} } WHERE { GRAPH ?g {?s ?p ?o} }") + "&format=trig")
         .then(trig => {
-            Global.writeFile(filename, trig)
+
+            Global.writeFile(filename, RDFUtils.fixCommonStringErrors(trig))
             Logger.info("IndeGx treatment done")
             return;
         }).catch(error => {
