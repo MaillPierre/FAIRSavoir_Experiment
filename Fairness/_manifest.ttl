@@ -59,7 +59,7 @@
                     }
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             }
             """
         ]
@@ -96,7 +96,7 @@
                     ?s ?p ?kg .
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             }
             """
         ]
@@ -135,7 +135,7 @@
                     ?kg ?p ?o .
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             };
             INSERT {
                 kgi:FAIRness kgi:dataGraph ?kgGraph .
@@ -158,7 +158,7 @@
                     ?s ?p ?kg .
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             };
             DELETE {
                 GRAPH ?kg {
@@ -214,7 +214,7 @@
                     ?kg ?p ?o .
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             };
             INSERT {
                 kgi:FAIRness kgi:dataGraph ?kgGraph .
@@ -239,7 +239,7 @@
                     ?s ?p ?kg .
                 }
                 BIND(IF( REGEX( STR(?kg), "^([a-zA-Z0-9-]+://)((([a-zA-Z0-9-]+.)?[a-zA-Z0-9-]+)+(.[a-zA-Z0-9-]+)/)([a-zA-Z0-9-]?[a-zA-Z0-9]+/)?"), ?kg, IRI( CONCAT( str($rawEndpointUrl), ENCODE_FOR_URI( str(?kg) ) ) ) ) AS ?kgEdited)
-                BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str(?kg)), "Graph")) AS ?kgGraph)
+                BIND(Iri(CONCAT(STR(kgi:), MD5(str(?kg)), "Graph")) AS ?kgGraph)
             };
             DELETE {
                 GRAPH ?wellknown {
@@ -269,11 +269,10 @@
                         ?endpointDescription sd:endpoint $rawEndpointUrl ;
                             a sd:Service, dcat:DataService , prov:Entity , earl:TestSubject ;
                             dcat:endpointURL $rawEndpointUrl ;
-                            rdfs:comment "No Dataset related with the IRI of the endpoint url was found." ;
-                            prov:wasGeneratedBy <https://raw.githubusercontent.com/Jendersen/KG_accountability/main/nonTrivialExtractionRules/simpleExtraction.ttl#activity> ;
+                            rdfs:comment "No Dataset related with the IRI was found." ;
                             prov:generatedAtTime ?time .
                 } WHERE {
-                    BIND(Iri(CONCAT("http://ns.inria.fr/kg/index#", MD5(str($rawEndpointUrl)), "Endpoint")) AS ?endpointDescription)
+                    BIND(Iri(CONCAT(STR(kgi:), MD5(str($rawEndpointUrl)), "Endpoint")) AS ?endpointDescription)
                     BIND(NOW() AS ?time)
                 }
             """

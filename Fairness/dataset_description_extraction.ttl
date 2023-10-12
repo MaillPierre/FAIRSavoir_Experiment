@@ -26,17 +26,6 @@
                      UNION { ?kg a schema:Dataset }
                      UNION { ?kg a sd:Dataset }
                      UNION { ?kg a dataid:Dataset }
-
-                     # is linked directly or not to the endpoint
-                     { ?kg ?endpointLink $rawEndpointUrl . }
-                     UNION {?kg dcat:accessService ?service .
-                            ?service dcat:endpointURL $rawEndpointUrl .  }
-                     UNION {?kg dcat:accessService ?service .
-                            ?service sd:endpoint $rawEndpointUrl . }
-                     UNION {?service dcat:servesDataset ?kg .
-                            ?service dcat:endpointURL $rawEndpointUrl . }
-                     UNION {?service dcat:servesDataset ?kg .
-                            ?service sd:endpoint $rawEndpointUrl . }
               }
               UNION {
                      GRAPH ?graph {
@@ -47,17 +36,6 @@
                             UNION { ?kg a schema:Dataset }
                             UNION { ?kg a sd:Dataset }
                             UNION { ?kg a dataid:Dataset }
-
-                            # is linked directly or not to the endpoint
-                            { ?kg ?endpointLink $rawEndpointUrl . }
-                            UNION {?kg dcat:accessService ?service .
-                                   ?service dcat:endpointURL $rawEndpointUrl .  }
-                            UNION {?kg dcat:accessService ?service .
-                                   ?service sd:endpoint $rawEndpointUrl . }
-                            UNION {?service dcat:servesDataset ?kg .
-                                   ?service dcat:endpointURL $rawEndpointUrl . }
-                            UNION {?service dcat:servesDataset ?kg .
-                                   ?service sd:endpoint $rawEndpointUrl . }
                      }
               }
         }
